@@ -1,5 +1,4 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-npm version patch
-git commit -m "feat: path version"
+npm run test:unit:ci
