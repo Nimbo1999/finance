@@ -1,6 +1,6 @@
 {
     "name": "nimbo-finance",
-    "version": "0.0.14",
+    "version": "0.0.15",
     "scripts": {
         "build": "npm run typecheck && vite build",
         "commit": "git-cz",
