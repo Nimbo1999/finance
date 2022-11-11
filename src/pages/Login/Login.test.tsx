@@ -1,10 +1,10 @@
-import { render, screen } from '@testing-library/react';
-import App from './App';
+import { renderWithProvider, screen } from '@/utils/test.utils';
+import Login from './Login';
 import '@/configs/i18next.config';
 
-describe('App Test', () => {
+describe('Login page', () => {
     it('Should display Olá mundo', () => {
-        render(<App />);
+        renderWithProvider(<Login />);
         const paragraph = screen.getByText('Olá mundo');
         expect(paragraph).toBeInTheDocument();
     });
