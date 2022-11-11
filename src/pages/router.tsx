@@ -1,14 +1,18 @@
 import { createBrowserRouter } from 'react-router-dom';
-import { LoginPage, ErrorPage } from '@/pages';
+import { LoginPage, ErrorPage, InitializingPage } from '@/pages';
 
 export const browserRouter = createBrowserRouter([
     {
         path: '/',
-        element: <LoginPage />,
+        element: <InitializingPage />,
         errorElement: <ErrorPage />,
     },
     {
         path: 'login',
-        element: <>Login Page</>,
+        element: <LoginPage />,
+    },
+    {
+        path: 'budget',
+        element: <>Budget Page</>,
     },
 ]);
