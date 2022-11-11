@@ -4,7 +4,8 @@ export default function App() {
     const { t, i18n } = useTranslation();
     return (
         <main>
-            {t('helloWord')}
+            <p>{t('helloWord')}</p>
+
             <button type="button" onClick={() => i18n.changeLanguage('pt-BR')}>
                 {t('lang.pt-BR')}
             </button>
