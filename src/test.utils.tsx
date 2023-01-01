@@ -3,8 +3,8 @@ import { Provider } from 'react-redux';
 import { render } from '@testing-library/react';
 import { RouterProvider, createMemoryRouter } from 'react-router-dom';
 
-import { ThemeProvider } from '@/contexts';
-import { store } from '@/redux/store';
+import { ThemeProvider } from '@/lib/contexts';
+import { store } from '@/lib/redux/store';
 
 const ProviderWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
     const router = createMemoryRouter([

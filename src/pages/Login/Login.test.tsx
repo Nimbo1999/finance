@@ -1,6 +1,6 @@
-import { renderWithProvider, screen } from '@/utils/test.utils';
+import { renderWithProvider, screen } from '@/test.utils';
 import Login from './Login';
-import '@/configs/i18next.config';
+import '@/lib/configs/i18next.config';
 import { useTranslation } from 'react-i18next';
 import { useEffect, useState } from 'react';
 

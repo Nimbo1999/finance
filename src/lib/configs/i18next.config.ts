@@ -1,17 +1,17 @@
 import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
-import Backend from 'i18next-chained-backend';
+import Backend, { ChainedBackendOptions } from 'i18next-chained-backend';
 import LocalStorageBackend from 'i18next-localstorage-backend';
 import HttpApi from 'i18next-http-backend';
 import resourcesToBackend from 'i18next-resources-to-backend';
 
-import { isDevelopmentMode } from '@/utils/environment.utils';
+import { isDevelopmentMode } from '@/lib/utils/environment.utils';
 
-import ptTranslation from '../../public/locales/pt-BR/translation.json';
-import ptErrors from '../../public/locales/pt-BR/errors.json';
-import enTranslation from '../../public/locales/en-US/translation.json';
-import enErrors from '../../public/locales/en-US/errors.json';
+import ptTranslation from '../../../public/locales/pt-BR/translation.json';
+import ptErrors from '../../../public/locales/pt-BR/errors.json';
+import enTranslation from '../../../public/locales/en-US/translation.json';
+import enErrors from '../../../public/locales/en-US/errors.json';
 
 const bundledResource = {
     'pt-BR': {
@@ -28,7 +28,7 @@ export default i18next
     .use(Backend)
     .use(LanguageDetector)
     .use(initReactI18next)
-    .init({
+    .init<ChainedBackendOptions>({
         debug: isDevelopmentMode,
         fallbackLng: 'pt-BR',
         interpolation: {
@@ -49,10 +49,7 @@ export default i18next
                     // expiration
                     expirationTime: 7 * 24 * 60 * 60 * 1000,
                     // language versions
-                    versions: {
-                        'pt-BR': 'v0.0.1',
-                        'en-US': 'v0.0.1',
-                    },
+                    defaultVersion: 'v0.0.2',
                     loadPath: '/locales/{{lng}}/{{ns}}.json',
                 },
                 {

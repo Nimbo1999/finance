@@ -1,7 +1,7 @@
 import { useTranslation } from 'react-i18next';
 
-import { useDispatch } from '@/redux';
-import { helloAction } from '@/redux/slices/user';
+import { useDispatch } from '@/lib/redux';
+import { helloAction } from '@/lib/redux/slices/user';
 
 const LoginPage: React.FC = () => {
     const { t, i18n } = useTranslation();
