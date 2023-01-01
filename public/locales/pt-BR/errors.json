@@ -1,12 +1,8 @@
 {
-    "helloWord": "Hello word",
-    "lang": {
-        "pt-BR": "Portuguese",
-        "en": "English"
-    },
     "error-page": {
         "title": "Opa!",
         "message": "Desculpe, um erro inesperado ocoreu",
         "button": "Página principal"
-    }
+    },
+    "test": "Teste"
 }

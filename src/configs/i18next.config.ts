@@ -1,21 +1,64 @@
 import i18next from 'i18next';
 import { initReactI18next } from 'react-i18next';
+import LanguageDetector from 'i18next-browser-languagedetector';
+import Backend from 'i18next-chained-backend';
+import LocalStorageBackend from 'i18next-localstorage-backend';
+import HttpApi from 'i18next-http-backend';
+import resourcesToBackend from 'i18next-resources-to-backend';
 
-import ptBRTranslation from '@/assets/i18n/pt-BR.json';
-import enTranslation from '@/assets/i18n/en.json';
+import { isDevelopmentMode } from '@/utils/environment.utils';
 
-i18next.use(initReactI18next).init({
-    resources: {
-        'pt-BR': {
-            translation: ptBRTranslation,
-        },
-        en: {
-            translation: enTranslation,
-        },
+import ptTranslation from '../../public/locales/pt-BR/translation.json';
+import ptErrors from '../../public/locales/pt-BR/errors.json';
+import enTranslation from '../../public/locales/en-US/translation.json';
+import enErrors from '../../public/locales/en-US/errors.json';
+
+const bundledResource = {
+    'pt-BR': {
+        translation: ptTranslation,
+        errors: ptErrors,
     },
-    lng: 'pt-BR',
-    fallbackLng: 'pt-BR',
-    interpolation: {
-        escapeValue: false,
+    'en-US': {
+        translation: enTranslation,
+        errors: enErrors,
     },
-});
+};
+
+export default i18next
+    .use(Backend)
+    .use(LanguageDetector)
+    .use(initReactI18next)
+    .init({
+        debug: isDevelopmentMode,
+        fallbackLng: 'pt-BR',
+        interpolation: {
+            escapeValue: false,
+        },
+        ns: ['translation', 'errors'],
+        defaultNS: 'translation',
+        backend: {
+            backends: [
+                LocalStorageBackend, // primary backend
+                HttpApi, // fallback backend
+                resourcesToBackend(bundledResource),
+            ],
+            backendOptions: [
+                {
+                    // prefix for stored languages
+                    prefix: 'i18next_res_',
+                    // expiration
+                    expirationTime: 7 * 24 * 60 * 60 * 1000,
+                    // language versions
+                    versions: {
+                        'pt-BR': 'v0.0.1',
+                        'en-US': 'v0.0.1',
+                    },
+                    loadPath: '/locales/{{lng}}/{{ns}}.json',
+                },
+                {
+                    /* options for secondary backend */
+                    loadPath: '/locales/{{lng}}/{{ns}}.json', // http load path for my own fallback
+                },
+            ],
+        },
+    });

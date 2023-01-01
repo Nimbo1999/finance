@@ -7,7 +7,7 @@ const LoginPage: React.FC = () => {
     const { t, i18n } = useTranslation();
     const dispatch = useDispatch();
 
-    const onSelectLanguage = (language: 'pt-BR' | 'en') => {
+    const onSelectLanguage = (language: 'pt-BR' | 'en-US') => {
         dispatch(
             helloAction({
                 firstName: 'Matheus',
@@ -21,13 +21,13 @@ const LoginPage: React.FC = () => {
 
     return (
         <main>
-            <p>{t('helloWord')}</p>
+            <p>{t('hello-word')}</p>
 
             <button type="button" onClick={() => onSelectLanguage('pt-BR')}>
-                {t('lang.pt-BR')}
+                {t('lang.pt')}
             </button>
 
-            <button type="button" onClick={() => onSelectLanguage('en')}>
+            <button type="button" onClick={() => onSelectLanguage('en-US')}>
                 {t('lang.en')}
             </button>
         </main>
