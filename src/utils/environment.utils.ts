@@ -1,1 +1,1 @@
-export const isDevelopmentMode = process.env.DEV;
+export const isDevelopmentMode = import.meta.env.DEV;

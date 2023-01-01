@@ -15,7 +15,7 @@ module.exports = {
     // Jest transformations
     // https://jestjs.io/docs/configuration#transform-objectstring-pathtotransformer--pathtotransformer-object
     transform: {
-        '^.+\\.tsx?$': 'ts-jest', // Transform TypeScript files using ts-jest
+        '^.+\\.tsx?$': 'babel-jest', // Transform TypeScript files using ts-jest
     },
 
     // A list of paths to modules that run some code to configure or set up the testing framework before each test file in the suite is executed
@@ -52,4 +52,12 @@ module.exports = {
 
     verbose: true,
     testTimeout: 30000,
+    globals: {
+        'ts-jest': {
+            tsconfig: false,
+            useESM: true,
+            babelConfig: true,
+            plugins: ['babel-plugin-transform-vite-meta-env'],
+        },
+    },
 };
