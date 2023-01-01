@@ -24,7 +24,7 @@ const bundledResource = {
     },
 };
 
-export default i18next
+i18next
     .use(Backend)
     .use(LanguageDetector)
     .use(initReactI18next)
