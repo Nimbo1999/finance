@@ -1,36 +1,11 @@
-import { useTranslation } from 'react-i18next';
-
-import { useDispatch } from '@/lib/redux';
-import { helloAction } from '@/lib/redux/slices/user';
+import HalfPageLayout from '@/layouts/HalfPage/HalfPage';
+import LoginForm from '@/pages/Login/Form/LoginForm';
 
 const LoginPage: React.FC = () => {
-    const { t, i18n } = useTranslation();
-    const dispatch = useDispatch();
-
-    const onSelectLanguage = (language: 'pt-BR' | 'en-US') => {
-        dispatch(
-            helloAction({
-                firstName: 'Matheus',
-                lastName: 'Lopes',
-                id: 'MOCK_ID',
-                profilePicture: null,
-            }),
-        );
-        i18n.changeLanguage(language);
-    };
-
     return (
-        <main>
-            <p>{t('hello-word')}</p>
-
-            <button type="button" onClick={() => onSelectLanguage('pt-BR')}>
-                {t('lang.pt')}
-            </button>
-
-            <button type="button" onClick={() => onSelectLanguage('en-US')}>
-                {t('lang.en')}
-            </button>
-        </main>
+        <HalfPageLayout imgUrl="/image/login-background.jpg">
+            <LoginForm />
+        </HalfPageLayout>
     );
 };
 
