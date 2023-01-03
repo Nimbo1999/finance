@@ -1,3 +1,5 @@
+import { Typography } from '@/components';
+
 import { Form } from './LoginForm.styled';
 
 // export interface LoginFormProps {}
@@ -5,10 +7,10 @@ import { Form } from './LoginForm.styled';
 const LoginForm: React.FC = () => {
     return (
         <Form>
-            <h2>Sign in</h2>
-            <p data-testid="login-page-subtitle">
+            <h3>Sign in</h3>
+            <Typography data-testid="login-page-subtitle">
                 Provide your credentions in order to access the system.
-            </p>
+            </Typography>
 
             <div>
                 <label htmlFor="email">Email</label>
@@ -20,12 +22,12 @@ const LoginForm: React.FC = () => {
                 <input type="password" id="password" />
             </div>
 
-            <p>
+            <Typography variant="body1">
                 <span data-testid="login-page-dont-have-account">
                     Don&apos;t have a account?
                 </span>
                 <a href="http://localhost:3000">Create account now</a>
-            </p>
+            </Typography>
 
             <button type="submit">Sign in</button>
         </Form>
