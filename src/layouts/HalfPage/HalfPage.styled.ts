@@ -23,4 +23,5 @@ export const Content = styled.main`
     display: flex;
     align-items: center;
     padding: 4rem 8rem;
+    background-color: ${({ theme }) => theme.palette.background.light};
 `;

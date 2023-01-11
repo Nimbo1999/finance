@@ -1,12 +1,5 @@
-import { BodyC, BodyProps } from './Typography.styled';
-
-export interface TypographyProps
-    extends React.HTMLAttributes<HTMLParagraphElement>,
-        BodyProps {}
-
-interface TypographyComponents {
-    Body: React.FC<TypographyProps>;
-}
+import { BodyC } from './Typography.styled';
+import { TypographyComponents, TypographyProps } from './Typography.d';
 
 const Typography: React.FC<TypographyProps> & TypographyComponents = props => (
     <BodyC {...props} />

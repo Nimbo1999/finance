@@ -1,8 +1,8 @@
-import { render, screen } from '@/test.utils';
+import { renderWithProvider, screen } from '@/test.utils';
 import HalfPageLayout from './HalfPage';
 
 const renderElement = (component: React.ReactNode) =>
-    render(
+    renderWithProvider(
         <HalfPageLayout imgUrl="/image/login-background.jpg">{component}</HalfPageLayout>,
     );
 

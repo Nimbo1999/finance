@@ -1,8 +1,5 @@
 import styled from 'styled-components';
-
-export interface BodyProps {
-    variant?: TypographyVariant;
-}
+import { BodyProps } from './Typography.d';
 
 export const BodyC = styled.p<BodyProps>`
     font-size: ${({ variant = 'body1' }) => (variant === 'body1' ? '1rem' : '0.875rem')};

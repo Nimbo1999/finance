@@ -1,35 +1,36 @@
-import { Typography } from '@/components';
-
-import { Form } from './LoginForm.styled';
+import { TextInput, Typography, Button } from '@/components';
+import { Form, FormHeader, FormMainContent, SubTitle, Anchor } from './LoginForm.styled';
 
 // export interface LoginFormProps {}
 
 const LoginForm: React.FC = () => {
     return (
         <Form>
-            <h3>Sign in</h3>
-            <Typography data-testid="login-page-subtitle">
-                Provide your credentions in order to access the system.
-            </Typography>
+            <FormHeader>
+                <h3>Sign in</h3>
 
-            <div>
-                <label htmlFor="email">Email</label>
-                <input type="email" id="email" />
-            </div>
+                <SubTitle data-testid="login-page-subtitle">
+                    Provide your credentions in order to access the system.
+                </SubTitle>
+            </FormHeader>
 
-            <div>
-                <label htmlFor="password">Password</label>
-                <input type="password" id="password" />
-            </div>
+            <FormMainContent>
+                <TextInput label="Email" type="email" id="email" />
 
-            <Typography variant="body1">
-                <span data-testid="login-page-dont-have-account">
-                    Don&apos;t have a account?
-                </span>
-                <a href="http://localhost:3000">Create account now</a>
-            </Typography>
+                <TextInput label="Password" type="password" id="password" />
 
-            <button type="submit">Sign in</button>
+                <Typography variant="body1">
+                    <span data-testid="login-page-dont-have-account">
+                        Don&apos;t have a account?
+                    </span>
+
+                    <Anchor to="/">Create account now</Anchor>
+                </Typography>
+            </FormMainContent>
+
+            <Button type="submit" color="primary">
+                Sign in
+            </Button>
         </Form>
     );
 };
