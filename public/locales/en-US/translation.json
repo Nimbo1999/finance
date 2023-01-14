@@ -1,6 +1,6 @@
 {
-    "hello-word": "Hello word",
     "lang": {
+        "language": "Language",
         "pt": "Portuguese",
         "en": "English"
     }

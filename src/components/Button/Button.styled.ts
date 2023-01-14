@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 import { ButtonProps } from './Button.d';
 
-const defaultButtonStyle = css`
+const defaultButtonStyle = (textTransform: ButtonProps['textTransform']) => css`
     appearance: none;
     padding: 0.625rem 1.5rem;
     font-size: 0.875rem;
@@ -15,6 +15,12 @@ const defaultButtonStyle = css`
     border: 2px solid ${({ theme }) => theme.palette.background.light};
     cursor: pointer;
     transition: all 250ms ease-out;
+    ${() =>
+        textTransform !== undefined
+            ? css`
+                  text-transform: ${textTransform};
+              `
+            : css``}
 
     &:hover {
         box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -45,11 +51,13 @@ const getVariantCss = ({ color, variant }: ButtonProps) =>
     variant && variant !== 'solid'
         ? variant === 'outline'
             ? css`
-                  background-color: ${({ theme }) => theme.palette.background.main};
+                  background-color: transparent;
+                  box-shadow: none;
                   color: ${({ theme }) =>
                       color && color !== 'default'
                           ? theme.palette[color].main
                           : 'inherit'};
+                  border-width: 2px;
                   border-color: ${({ theme }) =>
                       color && color !== 'default'
                           ? theme.palette[color].main
@@ -66,7 +74,14 @@ const getVariantCss = ({ color, variant }: ButtonProps) =>
         : css``;
 
 export const Button = styled.button<ButtonProps>`
-    ${defaultButtonStyle}
+    ${({ textTransform }) => defaultButtonStyle(textTransform)}
     ${({ color }) => getBackgroundColor(color)}
     ${({ variant, color }) => getVariantCss({ variant, color })}
+`;
+
+export const ButtonWithIcon = styled(Button)`
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
 `;

@@ -2,6 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { render } from '@testing-library/react';
 import { RouterProvider, createMemoryRouter } from 'react-router-dom';
+import '@/lib/configs/i18next.config';
 
 import { ThemeProvider } from '@/lib/contexts';
 import { store } from '@/lib/redux/store';

@@ -1,3 +1,4 @@
+import { faGoogle } from '@fortawesome/free-brands-svg-icons';
 import { TextInput, Typography, Button } from '@/components';
 import { Form, FormHeader, FormMainContent, SubTitle, Anchor } from './LoginForm.styled';
 
@@ -30,6 +31,10 @@ const LoginForm: React.FC = () => {
 
             <Button type="submit" color="primary">
                 Sign in
+            </Button>
+
+            <Button type="submit" color="primary" variant="outline" leftIcon={faGoogle}>
+                Sign in with Google
             </Button>
         </Form>
     );

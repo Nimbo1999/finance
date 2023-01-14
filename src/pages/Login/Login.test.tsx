@@ -2,10 +2,10 @@ import { renderWithProvider, screen } from '@/test.utils';
 import Login from './Login';
 
 describe('Login page', () => {
-    it('Should display right static content', () => {
+    it('Should display right static content', async () => {
         renderWithProvider(<Login />);
 
-        const heading = screen.getByRole('heading', { name: /Sign in/i });
+        const heading = await screen.findByRole('heading', { name: /Sign in/i });
         const paragraph = screen.getByTestId('login-page-subtitle');
         const paragraph1 = screen.getByTestId('login-page-dont-have-account');
         const anchor = screen.getByRole('link', {
@@ -13,7 +13,7 @@ describe('Login page', () => {
         });
         const emailLabel = screen.getByLabelText(/email/i);
         const passwordLabel = screen.getByLabelText(/password/i);
-        const signInButton = screen.getByRole('button', { name: /sign in/i });
+        const signInButton = screen.getByRole('button', { name: /sign in$/i });
 
         expect(heading).toBeInTheDocument();
         expect(paragraph).toHaveTextContent(

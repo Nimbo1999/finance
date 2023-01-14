@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Button as TranslationButtonComponent } from '@/components';
 
 export const Layout = styled.div`
     display: grid;
@@ -20,8 +21,15 @@ export const ImageSide = styled.aside<ImageSideProps>`
 `;
 
 export const Content = styled.main`
+    position: relative;
     display: flex;
     align-items: center;
     padding: 4rem 8rem;
     background-color: ${({ theme }) => theme.palette.background.light};
+`;
+
+export const TranslationButton = styled(TranslationButtonComponent)`
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
 `;

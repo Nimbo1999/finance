@@ -2,6 +2,7 @@ import { Typography, Anchor as AnchorComponent } from '@/components';
 import styled from 'styled-components';
 
 export const Form = styled.form`
+    flex: 1;
     display: flex;
     flex-direction: column;
     gap: 2rem;
