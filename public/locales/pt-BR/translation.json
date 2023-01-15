@@ -1,7 +1,22 @@
 {
+    "form": {
+        "email": {
+            "label": "Email"
+        },
+        "password": {
+            "label": "Password"
+        }
+    },
     "lang": {
         "language": "Linguagem",
         "pt": "Português",
         "en": "Inglês"
+    },
+    "sign-in": {
+        "sign-in-title": "Entrar",
+        "sign-in-subtitle": "Informe suas credenciais e acesse a sua conta agora mesmo.",
+        "sign-in-create-account": "Ainda não tem uma conta? <anchor>Criar conta agora mesmo</anchor>",
+        "sign-in-submit": "Entrar",
+        "sign-in-with-google": "Entrar com o Google"
     }
 }

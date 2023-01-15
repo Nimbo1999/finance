@@ -49,7 +49,7 @@ i18next
                     // expiration
                     expirationTime: 7 * 24 * 60 * 60 * 1000,
                     // language versions
-                    defaultVersion: 'v0.0.3',
+                    defaultVersion: 'v0.0.4',
                     loadPath: '/locales/{{lng}}/{{ns}}.json',
                 },
                 {
