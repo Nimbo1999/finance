@@ -1,10 +1,14 @@
 {
     "form": {
         "email": {
-            "label": "Email"
+            "label": "Email",
+            "required": "O email é obrigatório",
+            "invalid": "O email {{email}} não está válido"
         },
         "password": {
-            "label": "Password"
+            "label": "Senha",
+            "required": "A senha é obrigatória",
+            "min-lenght": "A sua senha deve ter no mínimo 6 caracteres"
         }
     },
     "lang": {

@@ -1,13 +1,24 @@
-type TypographyVariant = 'body1' | 'body2';
+import React from 'react';
 
-export interface TypographyProps
-    extends React.HTMLAttributes<HTMLParagraphElement>,
-        BodyProps {}
+type TypographyVariant = 'body1' | 'body2' | 'caption';
+export type TypographyColor =
+    | 'primary'
+    | 'secondary'
+    | 'success'
+    | 'info'
+    | 'error'
+    | 'default';
 
-export interface TypographyComponents {
-    Body: React.FC<TypographyProps>;
+export interface TypographyBodyProps extends React.HTMLAttributes<HTMLParagraphElement> {
+    variant?: TypographyVariant;
+    color?: TypographyColor;
 }
 
-export interface BodyProps {
-    variant?: TypographyVariant;
+export interface TypographyCaptionProps extends React.HTMLAttributes<HTMLSpanElement> {
+    color?: TypographyColor;
+}
+
+export interface TypographyComponents {
+    Body: React.FC<TypographyBodyProps>;
+    Caption: React.FC<TypographyCaptionProps>;
 }

@@ -1,10 +1,14 @@
 {
     "form": {
         "email": {
-            "label": "Email"
+            "label": "Email",
+            "required": "You must provide a email",
+            "invalid": "{{email}} is not a valid email"
         },
         "password": {
-            "label": "Password"
+            "label": "Password",
+            "required": "You must type your password",
+            "min-lenght": "Your password must have at least 6 characters"
         }
     },
     "lang": {

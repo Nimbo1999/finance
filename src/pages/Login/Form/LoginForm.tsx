@@ -1,13 +1,20 @@
 import { faGoogle } from '@fortawesome/free-brands-svg-icons';
-import { TextInput, Typography, Button } from '@/components';
-import { Form, FormHeader, FormMainContent, SubTitle, Anchor } from './LoginForm.styled';
+import { useFormContext } from 'react-hook-form';
 import { useTranslation, Trans } from 'react-i18next';
+
+import { TextInput, Typography, Button } from '@/components';
+import { emailValidator } from '@/lib/utils/validator.utils';
+import withForm from '@/lib/HOCs/withForm';
+import { Form, FormHeader, FormMainContent, SubTitle, Anchor } from './LoginForm.styled';
 
 const LoginForm: React.FC = () => {
     const { t } = useTranslation();
+    const { register, handleSubmit } = useFormContext();
+
+    const onSubmit = (values: any) => console.log(values);
 
     return (
-        <Form>
+        <Form onSubmit={handleSubmit(onSubmit)}>
             <FormHeader>
                 <h3>
                     <Trans i18nKey="sign-in.sign-in-title" />
@@ -19,12 +26,29 @@ const LoginForm: React.FC = () => {
             </FormHeader>
 
             <FormMainContent>
-                <TextInput label={t('form.email.label')} type="email" id="email" />
+                <TextInput
+                    label={t('form.email.label')}
+                    type="email"
+                    id="email"
+                    {...register('email', {
+                        required: t('form.email.required') as string,
+                        validate: emailValidator,
+                    })}
+                    required
+                />
 
                 <TextInput
                     label={t('form.password.label')}
                     type="password"
                     id="password"
+                    {...register('password', {
+                        required: t('form.password.required') as string,
+                        minLength: {
+                            message: t('form.password.min-lenght'),
+                            value: 6,
+                        },
+                    })}
+                    required
                 />
 
                 <Typography variant="body1">
@@ -48,4 +72,4 @@ const LoginForm: React.FC = () => {
     );
 };
 
-export default LoginForm;
+export default withForm(LoginForm);

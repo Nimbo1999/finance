@@ -1,10 +1,10 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const TextInputContainer = styled.div`
     display: inline-block;
 `;
 
-export const Input = styled.input`
+export const Input = styled.input<{ hasError?: boolean }>`
     appearance: none;
     padding: 0.5rem 0.75rem;
     background-color: ${({ theme }) => theme.palette.background.main};
@@ -17,6 +17,14 @@ export const Input = styled.input`
     outline: transparent solid 2px;
     outline-offset: 1px;
     transition: outline 250ms ease-out;
+    ${({ hasError }) =>
+        hasError
+            ? css`
+                  margin-bottom: 2px;
+                  border: 1px solid ${({ theme }) => theme.palette.error.dark};
+                  background-color: ${({ theme }) => theme.palette.error.light}80;
+              `
+            : undefined};
 
     &:focus {
         outline: ${({ theme }) => theme.palette.info.light} solid 2px;

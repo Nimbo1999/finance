@@ -1,11 +1,20 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { LabelProps } from '../Input';
+
+const getLabelColor = (hasError?: boolean) =>
+    hasError
+        ? css`
+              color: ${({ theme }) => theme.palette.error.main};
+          `
+        : css`
+              color: ${({ theme }) => theme.palette.text.primary};
+          `;
 
 const Label = styled.label<LabelProps>`
     display: block;
     font-size: 1rem;
-    color: ${({ theme }) => theme.palette.text.primary};
     margin-bottom: 0.375rem;
+    ${({ hasError }) => getLabelColor(hasError)}
 
     &::before {
         color: ${({ theme }) => theme.palette.error.main};
